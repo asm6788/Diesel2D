@@ -3,6 +3,7 @@
 #include <unordered_map>
 #include "GameObject.h"
 #include "SceneManger.h"
+#include "Engine.h"
 using namespace std;
 
 std::unordered_map<int, struct Scene> SceneManger::Scenes;
@@ -15,11 +16,14 @@ SceneManger::SceneManger()
 
 void SceneManger::LoadScene(struct Scene Scene_Old, struct Scene Scene_Load)
 {
-	for (int i = 0; i != Scene_Old.GameObjects.size(); i++)
+	Engine eng = Engine();
+	for (GameObject go : Scene_Old.GameObjects)
 	{
-		SDL_DestroyTexture(Scene_Old.GameObjects[i].Texture);
+		SDL_DestroyTexture(go.Texture);
+		SDL_FillRect(go.Surface, NULL, 0x000000);
 	}
 	Scene_Old.GameObjects.clear();
+	SDL_RenderClear(eng.ren.renderer);
 	Curret = Scene_Load;
 
 }

@@ -6,7 +6,10 @@
 #include"Input.h"
 #include"SceneManger.h"
 using namespace std;
-Render ren;
+
+bool Engine::CanInput;
+Render Engine::ren;
+Input Engine::input = Input();
 Engine::Engine(int SceneID,string SceneName,string title , int posX, int posY, int width, int height)
 {
 	SDL_Init(SDL_INIT_VIDEO);
@@ -14,21 +17,37 @@ Engine::Engine(int SceneID,string SceneName,string title , int posX, int posY, i
 	ren =  Render(win);
 	thread TH_render(&Render::LoppRender,ren);
 	TH_render.detach();
-	thread TH_ReqUpdate(&Engine::ReqUpdate,this);
-	TH_ReqUpdate.detach();
 	SceneManger s = SceneManger();
 	s.Scenes.insert(std::make_pair(SceneID, Scene(SceneID, SceneName)));
 	s.Curret = Scene(SceneID, SceneName);
+}
+
+Engine::Engine()
+{
+}
+
+void Engine::ReqInput()
+{
+	CanInput = true;
+	input.DetectKey();
+}
+
+void Engine::EndInput()
+{
+	CanInput = false;
 }
 
 void Engine::ReqUpdate()
 {
 	while (true)
 	{
+		if (CanInput) { break; }
 		Update(NULL);
+		input.DetectKey();
 		SDL_Delay(100 / 6);
 	}
 }
+
 
 void Engine::TEST()
 {
