@@ -75,8 +75,8 @@
     <LibraryPath>C:\Users\asm67\source\repos\Diesel2D\Diesel2D\SDL2-2.0.8\lib\x86;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
-    <IncludePath>C:\Users\asm67\source\repos\Diesel2D\Diesel2D\SDL2-2.0.8\include;$(IncludePath)</IncludePath>
-    <LibraryPath>C:\Users\asm67\source\repos\Diesel2D\Diesel2D\SDL2-2.0.8\lib\x64;$(LibraryPath)</LibraryPath>
+    <IncludePath>C:\Users\asm67\source\repos\Diesel2D\Diesel2D\SDL2-2.0.8\include;C:\Users\asm67\source\repos\Diesel2D\Diesel2D\LUA\include;$(IncludePath)</IncludePath>
+    <LibraryPath>C:\Users\asm67\source\repos\Diesel2D\Diesel2D\SDL2-2.0.8\lib\x64;C:\Users\asm67\source\repos\Diesel2D\Diesel2D\LUA;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
@@ -97,7 +97,7 @@
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
-      <AdditionalDependencies>SDL2.lib;SDL2main.lib;SDL2_ttf.lib;SDL2_image.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>SDL2.lib;SDL2main.lib;SDL2_ttf.lib;SDL2_image.lib;SDL2_mixer.lib;lua53.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -127,12 +127,14 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Audio.cpp" />
     <ClCompile Include="Engine.cpp" />
     <ClCompile Include="EventSystem\event_system.cpp" />
     <ClCompile Include="GameObject.cpp" />
     <ClCompile Include="Image.cpp" />
     <ClCompile Include="Input.cpp" />
     <ClCompile Include="Label.cpp" />
+    <ClCompile Include="LUA.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Render.cpp" />
     <ClCompile Include="Scene1.cpp" />
@@ -140,6 +142,7 @@
     <ClCompile Include="UI.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Audio.h" />
     <ClInclude Include="Diesel2D.h" />
     <ClInclude Include="Engine.h" />
     <ClInclude Include="EventSystem\event_system.h" />
@@ -147,6 +150,7 @@
     <ClInclude Include="Image.h" />
     <ClInclude Include="Input.h" />
     <ClInclude Include="Label.h" />
+    <ClInclude Include="LUA.h" />
     <ClInclude Include="Render.h" />
     <ClInclude Include="Scene1.h" />
     <ClInclude Include="SceneManger.h" />

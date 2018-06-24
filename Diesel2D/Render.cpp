@@ -12,7 +12,6 @@ Render::Render(SDL_Window * win)
 
 Render::Render()
 {
-
 }
 
 Render::~Render()

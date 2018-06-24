@@ -3,7 +3,7 @@
 #include<iostream>
 #include <functional>
 #include "EventSystem\event_system.h"
-#include<thread> 
+#include<thread>
 
 const Uint8 *keystates;
 

@@ -13,7 +13,6 @@ SceneManger::SceneManger()
 {
 }
 
-
 void SceneManger::LoadScene(struct Scene Scene_Old, struct Scene Scene_Load)
 {
 	Engine eng = Engine();
@@ -25,10 +24,7 @@ void SceneManger::LoadScene(struct Scene Scene_Old, struct Scene Scene_Load)
 	Scene_Old.GameObjects.clear();
 	SDL_RenderClear(eng.ren.renderer);
 	Curret = Scene_Load;
-
 }
-
-
 
 SceneManger::~SceneManger()
 {

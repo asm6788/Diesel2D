@@ -1,8 +1,6 @@
 #include "Scene1.h"
 #include "Diesel2D.h"
 
-
-
 Scene1::Scene1()
 {
 	EventHandler Key = [](std::any object) {
@@ -10,7 +8,6 @@ Scene1::Scene1()
 		std::string s = std::to_string(static_cast<int>(scan)) + "\n";
 		printf(s.c_str());
 	};
-
 
 	EventHandler MouseMotion = [](std::any object) {
 		SDL_MouseMotionEvent scan = std::any_cast<SDL_MouseMotionEvent>(object);
@@ -27,6 +24,9 @@ Scene1::Scene1()
 	EventHandler Update = [](std::any object) {
 		printf("업데이트\n");
 	};
+	Audio audio = Audio("soviet-anthem.mp3","Kim.mp3");
+	audio.Play(false);
+	audio.PlayEffect(100);
 	Engine eng = Engine();
 	eng.input.KeyEvent += Key;
 	eng.input.MouseButtonEvent += MouseButton;
@@ -34,8 +34,6 @@ Scene1::Scene1()
 	eng.Update += Update;
 	eng.ReqUpdate();
 }
-
-
 
 Scene1::~Scene1()
 {

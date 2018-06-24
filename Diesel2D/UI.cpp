@@ -9,11 +9,9 @@ UI::UI()
 	path = UI::ExePath().append("\\");
 }
 
-
 UI::~UI()
 {
 }
-
 
 string UI::ExePath()
 {
