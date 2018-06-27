@@ -75,8 +75,8 @@
     <LibraryPath>C:\Users\asm67\source\repos\Diesel2D\Diesel2D\SDL2-2.0.8\lib\x86;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
-    <IncludePath>C:\Users\asm67\source\repos\Diesel2D\Diesel2D\SDL2-2.0.8\include;C:\Users\asm67\source\repos\Diesel2D\Diesel2D\LUA\include;$(IncludePath)</IncludePath>
-    <LibraryPath>C:\Users\asm67\source\repos\Diesel2D\Diesel2D\SDL2-2.0.8\lib\x64;C:\Users\asm67\source\repos\Diesel2D\Diesel2D\LUA;$(LibraryPath)</LibraryPath>
+    <IncludePath>C:\Users\asm67\source\repos\Diesel2D\Diesel2D\SDL2-2.0.8\include;C:\Users\asm67\source\repos\Diesel2D\Diesel2D\sol2;C:\Users\asm67\source\repos\Diesel2D\Diesel2D\lua\include;$(IncludePath)</IncludePath>
+    <LibraryPath>C:\Users\asm67\source\repos\Diesel2D\Diesel2D\SDL2-2.0.8\lib\x64;C:\Users\asm67\source\repos\Diesel2D\Diesel2D\lua;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
@@ -134,8 +134,8 @@
     <ClCompile Include="Image.cpp" />
     <ClCompile Include="Input.cpp" />
     <ClCompile Include="Label.cpp" />
-    <ClCompile Include="LUA.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="ProcessLUA.cpp" />
     <ClCompile Include="Render.cpp" />
     <ClCompile Include="Scene1.cpp" />
     <ClCompile Include="SceneManger.cpp" />
@@ -150,7 +150,7 @@
     <ClInclude Include="Image.h" />
     <ClInclude Include="Input.h" />
     <ClInclude Include="Label.h" />
-    <ClInclude Include="LUA.h" />
+    <ClInclude Include="ProcessLUA.h" />
     <ClInclude Include="Render.h" />
     <ClInclude Include="Scene1.h" />
     <ClInclude Include="SceneManger.h" />

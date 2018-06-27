@@ -4,8 +4,7 @@
 #include<string>
 #include <windows.h>
 
-
-Audio::Audio(string musicfile,string effectfile)
+Audio::Audio(string musicfile, string effectfile)
 {
 	SDL_Init(SDL_INIT_AUDIO);
 	Mix_OpenAudio(22050, AUDIO_S16SYS, 2, 640);
@@ -20,9 +19,19 @@ void Audio::Play(int loop)
 	Mix_PlayMusic(music, loop);
 }
 
+void Audio::ChangeEffectVolume(int volume)
+{
+	Mix_VolumeChunk(effect, volume);
+}
+
+void Audio::ChangeMusicolume(int volume)
+{
+	Mix_Volume(1, volume);
+}
+
 void Audio::PlayEffect(int loop)
 {
-	Mix_PlayChannel(-1, effect, loop);
+	Mix_PlayChannel(1, effect, loop);
 }
 
 void Audio::Pause()

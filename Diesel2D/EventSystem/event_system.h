@@ -1,3 +1,4 @@
+#pragma once
 #ifndef _RDB_EVENT_SYSTEM_H_
 #define _RDB_EVENT_SYSTEM_H_
 
@@ -45,6 +46,7 @@ public:
     Event &operator+=(const EventHandler &handler);
     Event &operator+=(const EventHandler::Func &handler);
     Event &operator-=(const EventHandler &handler);
+#pragma warning(suppress: 4267)
     int totalHandlers() { return this->handlers.size(); }
 };
 

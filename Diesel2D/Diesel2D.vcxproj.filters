@@ -60,7 +60,7 @@
     <ClCompile Include="Audio.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
-    <ClCompile Include="LUA.cpp">
+    <ClCompile Include="ProcessLUA.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
   </ItemGroup>
@@ -101,7 +101,7 @@
     <ClInclude Include="Audio.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
-    <ClInclude Include="LUA.h">
+    <ClInclude Include="ProcessLUA.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
   </ItemGroup>

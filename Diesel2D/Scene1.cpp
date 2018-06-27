@@ -1,5 +1,9 @@
 #include "Scene1.h"
 #include "Diesel2D.h"
+#include<string>
+
+
+using namespace std;
 
 Scene1::Scene1()
 {
@@ -27,6 +31,7 @@ Scene1::Scene1()
 	Audio audio = Audio("soviet-anthem.mp3","Kim.mp3");
 	audio.Play(false);
 	audio.PlayEffect(100);
+	ProcessLUA lua = ProcessLUA();
 	Engine eng = Engine();
 	eng.input.KeyEvent += Key;
 	eng.input.MouseButtonEvent += MouseButton;

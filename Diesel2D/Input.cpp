@@ -9,7 +9,6 @@ const Uint8 *keystates;
 
 Input::Input()
 {
-	SDL_Event event;
 	keystates = SDL_GetKeyboardState(NULL);
 }
 
@@ -19,6 +18,11 @@ void Input::DetectKey()
 	while (SDL_PollEvent(&event)) {
 		if (event.type == SDL_KEYDOWN) {
 			KeyEvent(event.key.keysym.scancode);
+		}
+		else if (event.type == SDL_QUIT)
+		{
+			SDL_Quit();
+			std::exit(0);
 		}
 		else if (event.type == SDL_MOUSEMOTION)
 		{

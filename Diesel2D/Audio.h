@@ -12,6 +12,8 @@ private:
 public:
 	Audio(string musicfile, string effectfile);
 	void Play(int loop);
+	void ChangeEffectVolume(int volume);
+	void ChangeMusicolume(int volume);
 	void PlayEffect(int loop);
 	void Pause();
 	void Resume();
