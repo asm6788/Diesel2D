@@ -4,12 +4,14 @@
 #include <sol.hpp>
 using namespace std;
 
-ProcessLUA::ProcessLUA()
+ProcessLUA::ProcessLUA(string file)
 {
-	sol::state lua;
-	lua.open_libraries(sol::lib::base);
-	lua.script_file("C:\\Users\\asm67\\source\\repos\\Diesel2D\\x64\\Debug\\script\\test.lua");
-	int i = lua["luaAdd"](1, 10);
+	state.open_libraries(sol::lib::base);
+	state.script_file(ExePath().append("\\").append(file.c_str()).c_str());
+}
+ProcessLUA::ProcessLUA(const ProcessLUA &)
+{
+	
 }
 
 string ProcessLUA::ExePath()
