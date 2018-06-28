@@ -20,6 +20,10 @@ Label::Label(SDL_Color color, Render renderer, string font, string text, int X, 
 
 	SceneManger s = SceneManger();
 	s.Curret.GameObjects.push_back(GameObject(surfaceMessage, Message, Message_rect));
+
+	this->Surface = surfaceMessage;
+	this->Texture = Message;
+	this->Rect = Message_rect;
 }
 
 Label::~Label()

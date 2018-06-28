@@ -7,4 +7,5 @@
 #include "SceneManger.h"
 #include "Audio.h"
 #include "ProcessLUA.h"
+#include "Collision.h"
 #include <sol.hpp>

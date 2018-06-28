@@ -1,7 +1,7 @@
 #include "Scene1.h"
 #include "Diesel2D.h"
 #include<string>
-
+#include<iostream>
 
 using namespace std;
 
@@ -40,6 +40,10 @@ Scene1::Scene1()
 	eng.input.MouseButtonEvent += MouseButton;
 	eng.input.MouseMotionEvent += MouseMotion;
 	eng.Update += Update;
+	Image img = Image(eng.ren, "test.png", 10, 10, 10, 10);
+	Image img1 = Image(eng.ren, "test.png", 10, 10, 10, 10);
+	Collision col = Collision();
+	col.Check(img.Rect, img1.Rect);
 	eng.ReqUpdate();
 }
 
