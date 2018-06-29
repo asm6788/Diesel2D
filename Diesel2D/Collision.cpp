@@ -1,8 +1,11 @@
 #include "Collision.h"
 #include <SDL.h>
 #include<thread>
+#include "Vector2.h"
 
 using namespace std;
+
+
 Collision::Collision()
 {
 }
@@ -10,23 +13,57 @@ Collision::Collision()
 void Collision::CollisionLoop(SDL_Rect * A, SDL_Rect * B, bool enable)
 {
 	IsLoop = enable;
-	thread TH_loop([A, B,this] {Loop(A, B); });
+	thread TH_loop([A, B, this] {Loop(A, B); });
 	TH_loop.detach();
 }
-
 void Collision::Loop(SDL_Rect * A, SDL_Rect * B)
 {
 	while (true)
 	{
 		if (IsLoop)
-		{	Check(A, B);	}
+		{
+			if(Check(A, B))
+			{
+				Event(NULL);
+			}
+		}
 		else
-		{	break;	}
+		{
+			break;
+		}
 
 		SDL_Delay(100 / 6);
 	}
 }
 
+void Collision::CollisionLoop(SDL_Rect * Me, bool enable)
+{
+	IsLoop = enable;
+	thread TH_loop([Me, this] {Loop(Me); });
+	TH_loop.detach();
+}
+
+void Collision::Loop(SDL_Rect * Me)
+{
+	while (true)
+	{
+		SDL_Rect Rect_Me = *Me;
+		SDL_Rect Near = Vector2(Rect_Me).NearObject(&Rect_Me).second.Rect;
+		if (IsLoop)
+		{
+			if(Check(Me, &Near))
+			{
+				Event(NULL);
+			}
+		}
+		else
+		{
+			break;
+		}
+
+		SDL_Delay(100 / 6);
+	}
+}
 
 bool Collision::Check(SDL_Rect * A, SDL_Rect * B)
 {

@@ -11,7 +11,6 @@ ProcessLUA::ProcessLUA(string file)
 }
 ProcessLUA::ProcessLUA(const ProcessLUA &)
 {
-	
 }
 
 string ProcessLUA::ExePath()

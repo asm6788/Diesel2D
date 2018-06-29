@@ -14,4 +14,3 @@ public:
 	~UI();
 	std::string ExePath();
 };
-

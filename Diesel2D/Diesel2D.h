@@ -9,3 +9,4 @@
 #include "ProcessLUA.h"
 #include "Collision.h"
 #include <sol.hpp>
+#include "Vector2.h"

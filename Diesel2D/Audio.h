@@ -23,4 +23,3 @@ public:
 	Mix_Chunk *effect;
 	~Audio();
 };
-

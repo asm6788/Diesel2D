@@ -12,4 +12,3 @@ public:
 	string ExePath();
 	~ProcessLUA();
 };
-

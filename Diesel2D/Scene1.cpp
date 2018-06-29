@@ -29,10 +29,13 @@ Scene1::Scene1()
 	};
 
 	EventHandler Update = [](std::any object) {
-		int result = lua.state["luaAdd"](1, 2);
-		
 	};
-	Audio audio = Audio("soviet-anthem.mp3","Kim.mp3");
+
+	EventHandler CollisionEvent = [](std::any object) {
+		printf("Ãæµ¹ÇÔ! Äâ±¤ \n");
+	};
+
+	Audio audio = Audio("soviet-anthem.mp3", "Kim.mp3");
 	/*audio.Play(false);
 	audio.PlayEffect(100);*/
 	Engine eng = Engine();
@@ -43,7 +46,8 @@ Scene1::Scene1()
 	Image img = Image(eng.ren, "test.png", 10, 10, 10, 10);
 	Image img1 = Image(eng.ren, "test.png", 10, 10, 10, 10);
 	Collision col = Collision();
-	col.CollisionLoop(&img.Rect, &img1.Rect,true);
+	col.Event += CollisionEvent;
+	col.CollisionLoop(&img.Rect, true);
 	eng.ReqUpdate();
 }
 

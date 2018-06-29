@@ -8,6 +8,19 @@ GameObject::GameObject(SDL_Surface* Surface, SDL_Texture* Texture, SDL_Rect Rect
 	this->Rect = Rect;
 }
 
+GameObject::GameObject()
+{
+}
+
 GameObject::~GameObject()
 {
+}
+
+bool GameObject::operator!=(GameObject other)
+{
+	if (Surface == other.Surface || Texture == other.Texture || &Rect == &other.Rect)
+	{
+		return false;
+	}
+	return true;
 }

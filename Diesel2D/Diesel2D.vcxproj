@@ -142,6 +142,7 @@
     <ClCompile Include="Scene1.cpp" />
     <ClCompile Include="SceneManger.cpp" />
     <ClCompile Include="UI.cpp" />
+    <ClCompile Include="Vector2.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Audio.h" />
@@ -159,6 +160,7 @@
     <ClInclude Include="Scene1.h" />
     <ClInclude Include="SceneManger.h" />
     <ClInclude Include="UI.h" />
+    <ClInclude Include="Vector2.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

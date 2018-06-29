@@ -10,4 +10,3 @@ public:
 	~Render();
 	void LoppRender();
 };
-

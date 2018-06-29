@@ -9,4 +9,3 @@ public:
 
 	~Scene1();
 };
-
