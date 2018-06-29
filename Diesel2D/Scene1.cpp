@@ -43,7 +43,7 @@ Scene1::Scene1()
 	Image img = Image(eng.ren, "test.png", 10, 10, 10, 10);
 	Image img1 = Image(eng.ren, "test.png", 10, 10, 10, 10);
 	Collision col = Collision();
-	col.Check(img.Rect, img1.Rect);
+	col.CollisionLoop(&img.Rect, &img1.Rect,true);
 	eng.ReqUpdate();
 }
 
