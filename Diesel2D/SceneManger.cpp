@@ -16,13 +16,12 @@ SceneManger::SceneManger()
 void SceneManger::LoadScene(struct Scene Scene_Old, struct Scene Scene_Load)
 {
 	Engine eng = Engine();
-	for (GameObject go : Scene_Old.GameObjects)
+	for (GameObject* go : Scene_Old.GameObjects)
 	{
-		SDL_DestroyTexture(go.Texture);
-		SDL_FillRect(go.Surface, NULL, 0x000000);
+		SDL_DestroyTexture(go->Texture);
+		SDL_FillRect(go->Surface, NULL, 0x000000);
 	}
 	Scene_Old.GameObjects.clear();
-	SDL_RenderClear(eng.ren.renderer);
 	Curret = Scene_Load;
 }
 

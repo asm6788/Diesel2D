@@ -14,7 +14,7 @@ Image::Image(Render renderer, string file, int X, int Y, int w, int h)
 	SDL_Rect rect; rect.x = X;  rect.y = Y; rect.w = w; rect.h = h;
 	SDL_RenderCopy(renderer.renderer, texture, NULL, &rect);
 	SceneManger s = SceneManger();
-	s.Curret.GameObjects.push_back(GameObject(surface, texture, rect));
+	s.Curret.UIs.push_back(&UI(surface, texture, rect));
 	this->Surface = surface;
 	this->Texture = texture;
 	this->Rect = rect;
@@ -27,7 +27,7 @@ Image::Image(Render renderer, string file, Vector2 postion)
 	SDL_Rect rect = postion.ToRect();
 	SDL_RenderCopy(renderer.renderer, texture, NULL, &rect);
 	SceneManger s = SceneManger();
-	s.Curret.GameObjects.push_back(GameObject(surface, texture, rect));
+	s.Curret.UIs.push_back(&UI(surface, texture, rect));
 	this->Surface = surface;
 	this->Texture = texture;
 	this->Rect = rect;

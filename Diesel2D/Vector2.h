@@ -1,7 +1,8 @@
 #pragma once
+#include "Vector2.h"
 #include <SDL.h>
-#include <utility>
 #include "GameObject.h"
+
 class Vector2
 {
 public:
@@ -27,8 +28,8 @@ public:
 	bool operator==(Vector2 other);
 	bool operator!=(Vector2 other);
 	double DistanceTo(Vector2 other);
-	std::pair<double, GameObject> NearObject(SDL_Rect * exclude);
-	std::pair<double, GameObject> NearObject(GameObject exclude);
+	std::pair<double, GameObject *> NearObject(SDL_Rect * exclude);
+	std::pair<double, GameObject *> NearObject(GameObject* exclude);
 	float LookRotation();
 	Vector2 Normalize();
 	Vector2 Rotate(double angle);

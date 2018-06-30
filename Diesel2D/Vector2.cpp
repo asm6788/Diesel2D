@@ -118,14 +118,14 @@ double Vector2::DistanceTo(Vector2 other)
 	return sqrt(dx * dx + dy * dy);
 }
 
-std::pair <double, GameObject> Vector2::NearObject(SDL_Rect * exclude)
+std::pair <double, GameObject *> Vector2::NearObject(SDL_Rect * exclude)
 {
-	std::pair <double, GameObject> Temp = std::make_pair(100000000, GameObject());
+	std::pair <double, GameObject *> Temp = std::make_pair(100000000, &GameObject());
 	SceneManger s = SceneManger();
-	for each(GameObject go in s.Curret.GameObjects)
+	for each(GameObject* go in s.Curret.GameObjects)
 	{
-		double distance = this->DistanceTo(Vector2(go.Rect));
-		if (distance <= Temp.first && &go.Rect != exclude)
+		double distance = this->DistanceTo(Vector2(go->Rect));
+		if (distance <= Temp.first && &go->Rect != exclude)
 		{
 			Temp = std::make_pair(distance, go);
 		}
@@ -135,13 +135,13 @@ std::pair <double, GameObject> Vector2::NearObject(SDL_Rect * exclude)
 }
 
 
-std::pair <double, GameObject> Vector2::NearObject(GameObject exclude)
+std::pair <double, GameObject *> Vector2::NearObject(GameObject* exclude)
 {
-	std::pair <double, GameObject> Temp = std::make_pair(100000000, GameObject());
+	std::pair <double, GameObject *> Temp = std::make_pair(100000000, &GameObject());
 	SceneManger s = SceneManger();
-	for each(GameObject go in s.Curret.GameObjects)
+	for each(GameObject * go in s.Curret.GameObjects)
 	{
-		double distance = this->DistanceTo(Vector2(go.Rect));
+		double distance = this->DistanceTo(Vector2(go->Rect));
 		if (distance <= Temp.first && go != exclude )
 		{
 			Temp = std::make_pair(distance, go);

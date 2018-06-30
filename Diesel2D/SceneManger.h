@@ -3,6 +3,7 @@
 #include <vector>
 #include <unordered_map>
 #include "GameObject.h"
+#include "UI.h"
 
 class SceneManger
 {
@@ -19,7 +20,8 @@ struct Scene
 public:
 	int ID;
 	std::string Name;
-	std::vector<GameObject> GameObjects;
+	std::vector<GameObject *> GameObjects;
+	std::vector<UI *> UIs;
 	Scene(int ID, std::string Name)
 	{
 		this->ID = ID;

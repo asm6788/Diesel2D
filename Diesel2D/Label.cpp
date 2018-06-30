@@ -20,7 +20,7 @@ Label::Label(SDL_Color color, Render renderer, string font, string text, int X, 
 	SDL_RenderCopy(renderer.renderer, Message, NULL, &Message_rect);
 
 	SceneManger s = SceneManger();
-	s.Curret.GameObjects.push_back(GameObject(surfaceMessage, Message, Message_rect));
+	s.Curret.UIs.push_back(&UI(surfaceMessage, Message, Message_rect));
 
 	this->Surface = surfaceMessage;
 	this->Texture = Message;
@@ -38,7 +38,7 @@ Label::Label(SDL_Color color, Render renderer, string font, string text, Vector2
 	SDL_RenderCopy(renderer.renderer, Message, NULL, &Message_rect);
 
 	SceneManger s = SceneManger();
-	s.Curret.GameObjects.push_back(GameObject(surfaceMessage, Message, Message_rect));
+	s.Curret.UIs.push_back(&UI(surfaceMessage, Message, Message_rect));
 
 	this->Surface = surfaceMessage;
 	this->Texture = Message;

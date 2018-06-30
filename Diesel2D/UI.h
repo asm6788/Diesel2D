@@ -11,6 +11,7 @@ public:
 
 	std::string path;
 	UI();
+	UI(SDL_Surface* Surface, SDL_Texture* Texture, SDL_Rect Rect);
 	~UI();
 	std::string ExePath();
 };

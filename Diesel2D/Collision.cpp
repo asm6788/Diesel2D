@@ -48,7 +48,7 @@ void Collision::Loop(SDL_Rect * Me)
 	while (true)
 	{
 		SDL_Rect Rect_Me = *Me;
-		SDL_Rect Near = Vector2(Rect_Me).NearObject(&Rect_Me).second.Rect;
+		SDL_Rect Near = Vector2(Rect_Me).NearObject(&Rect_Me).second->Rect;
 		if (IsLoop)
 		{
 			if(Check(Me, &Near))
