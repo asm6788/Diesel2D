@@ -10,7 +10,7 @@ Vector2::Vector2(double _x, double _y, double _w, double _h)
 {
 	x = _x;
 	y = _y;
-	w = _y;
+	w = _w;
 	h = _h;
 }
 

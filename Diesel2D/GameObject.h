@@ -10,7 +10,7 @@ public:
 	SDL_Surface* Surface;
 	SDL_Texture* Texture;
 	SDL_Rect Rect;
-
+	int ID;
 	GameObject(SDL_Surface * Surface, SDL_Texture * Texture, SDL_Rect Rect);
 	GameObject(Render renderer, int X, int Y, int w, int h);
 	GameObject(Render renderer, Vector2 vector);

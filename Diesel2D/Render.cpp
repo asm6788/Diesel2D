@@ -3,6 +3,8 @@
 #include <chrono>
 #include <thread>
 #include"EventSystem\event_system.h"
+#include "SceneManger.h"
+#include<string>
 
 SDL_Renderer * Render::renderer;
 SDL_Window * Render::window;
@@ -24,8 +26,19 @@ Render::~Render()
 
 void Render::LoppRender()
 {
-	while (true) {
-		SDL_RenderPresent(renderer);
-		SDL_Delay(1000 / 60); // 60FPS
+
+	SceneManger s = SceneManger();
+	//printf("·»´õ¸µÁß..");
+	SDL_RenderClear(renderer);
+	for each(GameObject* go in s.Curret.GameObjects)
+	{
+		printf(std::to_string(go->Rect.y).append("\n").c_str());
+		SDL_RenderCopy(renderer, go->Texture, NULL, &go->Rect);
 	}
+	/*for each(UI* ui in s.Curret.UIs)
+	{
+		SDL_RenderCopy(renderer, ui->Texture, NULL, &ui->Rect);
+	}*/
+	SDL_RenderPresent(renderer);
+	SDL_Delay(1000 / 60); // 60FPS
 }

@@ -30,8 +30,8 @@ public:
 	double DistanceTo(Vector2 other);
 	std::pair<double, GameObject *> NearObject(SDL_Rect * exclude);
 	std::pair<double, GameObject *> NearObject(GameObject* exclude);
-	float LookRotation();
 	Vector2 Normalize();
-	Vector2 Rotate(double angle);
 	SDL_Rect ToRect();
+	float LookRotation();
+	Vector2 Rotate(double angle);
 };

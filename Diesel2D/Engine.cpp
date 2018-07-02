@@ -13,13 +13,11 @@ Input Engine::input = Input();
 Engine::Engine(int SceneID, string SceneName, string title, int posX, int posY, int width, int height)
 {
 	SDL_Init(SDL_INIT_VIDEO);
-	SDL_Window * win = SDL_CreateWindow(title.c_str(), posX, posY, width, height, 0);
-	ren = Render(win);
-	thread TH_render(&Render::LoppRender, ren);
-	TH_render.detach();
 	SceneManger s = SceneManger();
 	s.Scenes.insert(std::make_pair(SceneID, Scene(SceneID, SceneName)));
 	s.Curret = Scene(SceneID, SceneName);
+	SDL_Window * win = SDL_CreateWindow(title.c_str(), posX, posY, width, height, 0);
+	ren = Render(win);
 }
 
 Engine::Engine()
@@ -44,6 +42,7 @@ void Engine::ReqUpdate()
 		if (CanInput) { break; }
 		Update(NULL);
 		input.DetectKey();
+		ren.LoppRender();
 		SDL_Delay(100 / 6);
 	}
 }
