@@ -39,5 +39,4 @@ void Render::LoopRender()
 		SDL_RenderCopy(renderer, ui->Texture, NULL, &ui->Rect);
 	}*/
 	SDL_RenderPresent(renderer);
-	SDL_Delay(1000 / 60); // 60FPS
 }
