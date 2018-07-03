@@ -24,6 +24,11 @@ Engine::Engine()
 {
 }
 
+Uint64 NOW;
+Uint64 LAST = 0;
+double Engine::deltaTime = 0;
+float fps;
+
 void Engine::ReqInput()
 {
 	CanInput = true;
@@ -40,10 +45,20 @@ void Engine::ReqUpdate()
 	while (true)
 	{
 		if (CanInput) { break; }
+		LAST = SDL_GetTicks();
 		Update(NULL);
 		input.DetectKey();
-		ren.LoppRender();
-		SDL_Delay(100 / 6);
+		ren.LoopRender();
+		deltaTime = (double)1000 / 60 - (SDL_GetTicks() - LAST);
+		fps = 1000.0f / (float)(SDL_GetTicks() - LAST);
+		if (deltaTime > 0)
+		{
+			SDL_Delay(deltaTime);
+		}
+		else
+		{
+			SDL_Delay(1000 / 60);
+		}
 	}
 }
 

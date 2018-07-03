@@ -12,6 +12,7 @@ public:
 	static bool CanInput;
 	static Render ren;
 	static Input input;
+	static double deltaTime;
 	Event Update{};
 	~Engine();
 	Engine(int SceneID, string Scene, string title, int posX, int posY, int width, int height);

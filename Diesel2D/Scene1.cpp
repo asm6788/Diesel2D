@@ -18,19 +18,15 @@ Scene1::Scene1()
 		{
 		case SDL_SCANCODE_W:
 			go.Rect = (Vector2(go.Rect) + Vector2(0, -10, 0, 0)).ToRect();
-			go.ReqRender(eng.ren);
 			break;
 		case SDL_SCANCODE_A:
 			go.Rect = (Vector2(go.Rect) + Vector2(-10, 0, 0, 0)).ToRect();
-			go.ReqRender(eng.ren);
 			break;
 		case SDL_SCANCODE_S:
 			go.Rect = (Vector2(go.Rect) + Vector2(0, 10, 0, 0)).ToRect();
-			go.ReqRender(eng.ren);
 			break;
 		case SDL_SCANCODE_D:
 			go.Rect = (Vector2(go.Rect) + Vector2(10, 0, 0, 0)).ToRect();
-			go.ReqRender(eng.ren);
 			break;
 		default:
 			break;
@@ -50,7 +46,9 @@ Scene1::Scene1()
 		printf(s.c_str());
 	};
 
+
 	EventHandler Update = [](std::any object) {
+
 	};
 
 	EventHandler CollisionEvent = [](std::any object) {

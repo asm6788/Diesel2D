@@ -11,5 +11,5 @@ public:
 	Render(SDL_Window * win);
 	Render();
 	~Render();
-	void LoppRender();
+	void LoopRender();
 };

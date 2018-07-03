@@ -24,7 +24,7 @@ Render::~Render()
 {
 }
 
-void Render::LoppRender()
+void Render::LoopRender()
 {
 
 	SceneManger s = SceneManger();
@@ -32,7 +32,6 @@ void Render::LoppRender()
 	SDL_RenderClear(renderer);
 	for each(GameObject* go in s.Curret.GameObjects)
 	{
-		printf(std::to_string(go->Rect.y).append("\n").c_str());
 		SDL_RenderCopy(renderer, go->Texture, NULL, &go->Rect);
 	}
 	/*for each(UI* ui in s.Curret.UIs)
