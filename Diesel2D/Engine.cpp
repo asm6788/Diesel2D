@@ -5,11 +5,16 @@
 #include "Render.h"
 #include"Input.h"
 #include"SceneManger.h"
+#include "Collision.h"
+#include <vector>
+
 using namespace std;
 
 bool Engine::CanInput;
 Render Engine::ren;
 Input Engine::input = Input();
+vector<Collision *> Engine::Collisions;
+
 Engine::Engine(int SceneID, string SceneName, string title, int posX, int posY, int width, int height)
 {
 	SDL_Init(SDL_INIT_VIDEO);
@@ -49,6 +54,10 @@ void Engine::ReqUpdate()
 		Update(NULL);
 		input.DetectKey();
 		ren.LoopRender();
+		for each(Collision* col in Collisions)
+		{
+			col->Calculate();
+		}
 		deltaTime = (double)1000 / 60 - (SDL_GetTicks() - LAST);
 		fps = 1000.0f / (float)(SDL_GetTicks() - LAST);
 		if (deltaTime > 0)

@@ -1,7 +1,8 @@
 #include "Collision.h"
 #include <SDL.h>
-#include<thread>
 #include "Vector2.h"
+#include "GameObject.h"
+#include "EventSystem\event_system.h"
 
 using namespace std;
 
@@ -10,71 +11,56 @@ Collision::Collision()
 {
 }
 
-void Collision::CollisionLoop(SDL_Rect * A, SDL_Rect * B, bool enable)
+ Collision::Collision(GameObject * A, GameObject * B)
 {
-	IsLoop = enable;
-	thread TH_loop([A, B, this] {Loop(A, B); });
-	TH_loop.detach();
+	this->A = A;
+	this->B = B;
 }
-void Collision::Loop(SDL_Rect * A, SDL_Rect * B)
-{
-	while (true)
-	{
-		if (IsLoop)
-		{
-			if(Check(A, B))
-			{
-				Event(NULL);
-			}
-		}
-		else
-		{
-			break;
-		}
 
-		SDL_Delay(100 / 6);
+Collision::Collision(GameObject * Me)
+{
+	this->A = Me;
+	this->Me = true;
+}
+
+
+void Collision::Calculate()
+{
+	if(Me)
+	{ 
+		Check(A);
+	}
+	else
+	{
+		if (Check(A, &B->Rect))
+		{
+			Loop_Event(std::make_pair(A, B));
+		}
 	}
 }
 
-void Collision::CollisionLoop(SDL_Rect * Me, bool enable)
+void Collision::Check(GameObject * Me)
 {
-	IsLoop = enable;
-	thread TH_loop([Me, this] {Loop(Me); });
-	TH_loop.detach();
-}
-
-void Collision::Loop(SDL_Rect * Me)
-{
-	while (true)
+	if (!Me) { cerr << "Can not be used with Me boolean is false" << endl; }
+	SDL_Rect Rect_Me = Me->Rect;
+	SDL_Rect Near = Vector2(Rect_Me).NearObject(&Rect_Me).second->Rect;
+	if (Check(Me, &Near))
 	{
-		SDL_Rect Rect_Me = *Me;
-		SDL_Rect Near = Vector2(Rect_Me).NearObject(&Rect_Me).second->Rect;
-		if (IsLoop)
-		{
-			if(Check(Me, &Near))
-			{
-				Event(NULL);
-			}
-		}
-		else
-		{
-			break;
-		}
-
-		SDL_Delay(100 / 6);
+		ME_Event(Me);
 	}
 }
 
-bool Collision::Check(SDL_Rect * A, SDL_Rect * B)
+bool Collision::Check(GameObject * A, SDL_Rect * B)
 {
+	if (Me) { cerr << "Can not be used with Me boolean is true" << endl;}
 	int leftA, leftB;
 	int rightA, rightB;
 	int topA, topB;
 	int bottomA, bottomB;
-	leftA = A->x;
-	rightA = A->x + A->w;
-	topA = A->y;
-	bottomA = A->y + A->h;
+	leftA = A->Rect.x;
+	rightA = A->Rect.x + A->Rect.w;
+	topA = A->Rect.y;
+	bottomA = A->Rect.y + A->Rect.h;
 	leftB = B->x;
 	rightB = B->x + B->w;
 	topB = B->y;

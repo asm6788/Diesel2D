@@ -2,20 +2,25 @@
 #include "Component.h"
 #include <SDL.h>
 #include "EventSystem\event_system.h"
+#include "GameObject.h"
+
 
 class Collision :
 	public Component
 {
-private:
-	void Loop(SDL_Rect A, SDL_Rect B, bool enable);
 public:
-	Event Event{};
+	Event ME_Event{};
+	Event Loop_Event{};
 	bool IsLoop;
 	Collision();
-	void CollisionLoop(SDL_Rect * A, SDL_Rect * B, bool enable);
-	void CollisionLoop(SDL_Rect * Me, bool enable);
-	void Loop(SDL_Rect * A, SDL_Rect * B);
-	void Loop(SDL_Rect * Me);
-	bool Check(SDL_Rect * A, SDL_Rect * B);
+	Collision(GameObject * A, GameObject * B);
+	Collision(GameObject * Me);
+	void Check(GameObject * Me);
+	void Calculate();
+	bool Check(GameObject * A, SDL_Rect * B);
+	GameObject * A;
+	GameObject * B;
+	bool Me;
+	bool ID;
 	~Collision();
 };

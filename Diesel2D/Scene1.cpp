@@ -35,15 +35,15 @@ Scene1::Scene1()
 	};
 
 	EventHandler MouseMotion = [](std::any object) {
-		SDL_MouseMotionEvent scan = std::any_cast<SDL_MouseMotionEvent>(object);
+	/*	SDL_MouseMotionEvent scan = std::any_cast<SDL_MouseMotionEvent>(object);
 		std::string s = std::to_string(static_cast<int>(scan.x)) + "\n";
-		printf(s.c_str());
+		printf(s.c_str());*/
 	};
 
 	EventHandler MouseButton = [](std::any object) {
-		SDL_MouseButtonEvent scan = std::any_cast<SDL_MouseButtonEvent>(object);
+	/*	SDL_MouseButtonEvent scan = std::any_cast<SDL_MouseButtonEvent>(object);
 		std::string s = std::to_string(static_cast<int>(scan.button)) + "\n";
-		printf(s.c_str());
+		printf(s.c_str());*/
 	};
 
 
@@ -68,10 +68,12 @@ Scene1::Scene1()
 	go = GameObject(eng.ren, Vector2(300, 300, 100, 100));
 	SDL_FillRect(go.Surface, NULL, SDL_MapRGB(go.Surface->format, 255, 255, 255));
 
-	/*Collision col = Collision();
-	col.Event += CollisionEvent;
-	col.CollisionLoop(&go.Rect, true);
-*/
+	GameObject go2 = GameObject(eng.ren, Vector2(100, 100, 50, 50));
+
+	Collision col = Collision(&go ,&go2);
+	col.Loop_Event+= CollisionEvent;
+	col.ID = eng.Collisions.size();
+	eng.Collisions.push_back(&col);
 	go.ReqRender(eng.ren);
 	eng.ReqUpdate();
 }

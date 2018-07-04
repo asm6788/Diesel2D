@@ -34,9 +34,9 @@ void Render::LoopRender()
 	{
 		SDL_RenderCopy(renderer, go->Texture, NULL, &go->Rect);
 	}
-	/*for each(UI* ui in s.Curret.UIs)
+	for each(UI* ui in s.Curret.UIs)
 	{
 		SDL_RenderCopy(renderer, ui->Texture, NULL, &ui->Rect);
-	}*/
+	}
 	SDL_RenderPresent(renderer);
 }
