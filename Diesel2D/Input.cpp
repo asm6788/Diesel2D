@@ -15,7 +15,7 @@ Input::Input()
 void Input::DetectKey()
 {
 	SDL_Event event;
-	while (SDL_PollEvent(&event)) {
+	if(SDL_PollEvent(&event)) {
 		if (event.type == SDL_KEYDOWN) {
 			KeyEvent(event.key.keysym.scancode);
 		}
