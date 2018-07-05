@@ -50,7 +50,6 @@ void Engine::ReqUpdate()
 	while (true)
 	{
 		if (CanInput) { break; }
-		LAST = SDL_GetTicks();
 		Update(NULL);
 		input.DetectKey();
 		ren.LoopRender();
@@ -58,16 +57,16 @@ void Engine::ReqUpdate()
 		{
 			col->Calculate();
 		}
-		deltaTime = (double)1000 / 60 - (SDL_GetTicks() - LAST);
+		deltaTime = ((double)(SDL_GetTicks() - LAST)) / 1000;
 		fps = 1000.0f / (float)(SDL_GetTicks() - LAST);
-		if (deltaTime > 0)
-		{
-			SDL_Delay(deltaTime);
-		}
-		else
-		{
-			SDL_Delay(1000 / 60);
-		}
+		LAST = SDL_GetTicks();
+
+		if (deltaTime > 0.1)
+			deltaTime = 0.1;
+
+		if (0.025 <deltaTime < 0.06)
+			SDL_Delay((0.025 - deltaTime) * 1000);
+
 	}
 }
 
