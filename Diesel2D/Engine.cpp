@@ -22,6 +22,7 @@ Engine::Engine(int SceneID, string SceneName, string title, int posX, int posY, 
 	s.Scenes.insert(std::make_pair(SceneID, Scene(SceneID, SceneName)));
 	s.Curret = Scene(SceneID, SceneName);
 	SDL_Window * win = SDL_CreateWindow(title.c_str(), posX, posY, width, height, 0);
+	ScrennW = width; ScreenH = height;
 	ren = Render(win);
 }
 
@@ -64,9 +65,8 @@ void Engine::ReqUpdate()
 		if (deltaTime > 0.1)
 			deltaTime = 0.1;
 
-		if (0.025 <deltaTime < 0.06)
+		if (0.025 < deltaTime < 0.06)
 			SDL_Delay((0.025 - deltaTime) * 1000);
-
 	}
 }
 

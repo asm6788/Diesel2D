@@ -12,7 +12,7 @@ const int SCREEN_HEIGHT = 480;
 int main(int argc, char* args[])
 {
 	int posX = 100, posY = 100, width = 1280, height = 720;
-	Engine eng = Engine(0, "Init", string("Hello World"), posX, posY, width, height);
+	Engine eng = Engine(0, "Init", string("SD-Chan!"), posX, posY, width, height);
 	printf("엔진 초기화 완료");
 	/*Label label = Label(SDL_Color{ 255, 255, 255 }, eng.ren, std::string("d.ttf"),std::string("TEST"), 0, 0, 60, 60);*/
 	SceneManger s = SceneManger();

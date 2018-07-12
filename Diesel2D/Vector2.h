@@ -1,37 +1,34 @@
 #pragma once
-#include "Vector2.h"
+
 #include <SDL.h>
 #include "GameObject.h"
+#include "Render.h"
 
 class Vector2
 {
 public:
-	double x = 0;
-	double y = 0;
-	double w = 0;
-	double h = 0;
+	int x = 0;
+	int y = 0;
+	int w = 0;
+	int h = 0;
 	Vector2();
-	Vector2(double x, double y, double w, double h);
+	Vector2(int x, int y, int w, int h);
 	Vector2(SDL_Rect rect);
 	Vector2 operator+(Vector2 other);
 	Vector2 operator-(Vector2 other);
 	Vector2 operator*(int other);
 	Vector2 operator/(int other);
-	Vector2 operator*(double other);
-	Vector2 operator/(double other);
 	void operator+=(Vector2 other);
 	void operator-=(Vector2 other);
 	void operator*=(int other);
 	void operator/=(int other);
-	void operator*=(double other);
-	void operator/=(double other);
 	bool operator==(Vector2 other);
 	bool operator!=(Vector2 other);
-	double DistanceTo(Vector2 other);
-	std::pair<double, GameObject *> NearObject(SDL_Rect * exclude);
-	std::pair<double, GameObject *> NearObject(GameObject* exclude);
+	int DistanceTo(Vector2 other);
+	std::pair<int, GameObject *> NearObject(SDL_Rect * exclude);
+	std::pair<int, GameObject *> NearObject(GameObject* exclude);
 	Vector2 Normalize();
 	SDL_Rect ToRect();
 	float LookRotation();
-	Vector2 Rotate(double angle);
+	Vector2 Rotate(int angle);
 };

@@ -11,6 +11,8 @@ using namespace std;
 class Engine
 {
 public:
+	int ScrennW;
+	int ScreenH;
 	static bool CanInput;
 	static Render ren;
 	static Input input;
