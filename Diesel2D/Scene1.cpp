@@ -7,7 +7,7 @@ using namespace std;
 
 ProcessLUA lua = ProcessLUA("script\\test.lua");
 GameObject Me;
-std::vector<GameObject> Bullets;
+std::vector<GameObject *> Bullets;
 Vector2 BulletMove;
 Engine eng = Engine();
 
@@ -15,6 +15,7 @@ Scene1::Scene1()
 {
 	int result = lua.state["luaAdd"](1, 2);
 	EventHandler Key = [](std::any object) {
+		GameObject Bullet;
 		SDL_Scancode scan = std::any_cast<SDL_Scancode>(object);
 		int KeyNum = static_cast<int>(scan);
 		switch (KeyNum)
@@ -32,24 +33,24 @@ Scene1::Scene1()
 			Me.Translate(Vector2(10, 0, 0, 0));
 			break;
 		case SDL_SCANCODE_Q:
-			Bullets.push_back(GameObject(eng.ren, Vector2(570, 580, 1, 50)));
-			Bullets.back().ReqRender(eng.ren);
+			Bullets.push_back(new GameObject(eng.ren, Vector2(570, 580, 1, 50)));
+			Bullets.back()->ReqRender(eng.ren);
 			BulletMove = Vector2(-10, -10, 0, 0);
 			break;
 		case SDL_SCANCODE_E:
-			Bullets.push_back(GameObject(eng.ren, Vector2(570, 580, 1, 50)));
-			Bullets.back().ReqRender(eng.ren);
+			Bullets.push_back(new GameObject(eng.ren, Vector2(570, 580, 1, 50)));
+			Bullets.back()->ReqRender(eng.ren);
 			BulletMove = Vector2(10, -10, 0, 0);
 			break;
 		case SDL_SCANCODE_2:
-			Bullets.push_back(GameObject(eng.ren, Vector2(570, 580, 1, 50)));
-			Bullets.back().ReqRender(eng.ren);
+			Bullets.push_back(new GameObject(eng.ren, Vector2(570, 580, 1, 50)));
+			Bullets.back()->ReqRender(eng.ren);
 			BulletMove = Vector2(0, -10, 0, 0);
 			break;
 		case SDL_SCANCODE_SPACE:
-			Bullets.push_back(GameObject(eng.ren, Vector2(570, 580, 1, 50)));
-			Bullets.back().ReqRender(eng.ren);
-			BulletMove = Vector2(0, 10, 0, 0);
+			Bullets.push_back(new GameObject(eng.ren, Vector2(570, 580, 1, 50)));
+			Bullets.back()->ReqRender(eng.ren);
+			BulletMove =     Vector2(0, 10, 0, 0);
 			break;
 		default:
 			break;
